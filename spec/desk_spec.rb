@@ -59,6 +59,20 @@ describe Desk do
     end
   end
 
+  describe ".fulldomain=" do
+    before do
+      Desk.fulldomain = "https://help.zencoder.com"
+    end
+
+    it "should set the subdomain" do
+      Desk.fulldomain.should == "https://help.zencoder.com"
+    end
+
+    it "should change the endpoint" do
+      Desk.endpoint.should == "https://help.zencoder.com/api/#{Desk::Configuration::DEFAULT_VERSION}/"
+    end
+  end
+
   describe ".support_email" do
     it "should return the default support_email" do
       Desk.support_email.should == Desk::Configuration::DEFAULT_SUPPORT_EMAIL

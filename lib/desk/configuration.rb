@@ -15,6 +15,7 @@ module Desk
       :oauth_token_secret,
       :proxy,
       :subdomain,
+      :fulldomain,
       :support_email,
       :use_max_requests,
       :user_agent,
@@ -60,6 +61,9 @@ module Desk
     # By default use example
     DEFAULT_SUBDOMAIN = "example"
 
+    # Option for vanity domains with custom ssl certificates
+    DEFAULT_FULLDOMAIN = ""
+
     # The user agent that will be sent to the API endpoint if none is set
     DEFAULT_USER_AGENT = "Desk.com Ruby Gem #{Desk::VERSION}".freeze
 
@@ -98,6 +102,7 @@ module Desk
       self.oauth_token_secret = DEFAULT_OAUTH_TOKEN_SECRET
       self.proxy              = DEFAULT_PROXY
       self.subdomain          = DEFAULT_SUBDOMAIN
+      self.fulldomain         = DEFAULT_FULLDOMAIN
       self.support_email      = DEFAULT_SUPPORT_EMAIL
       self.use_max_requests   = DEFAULT_USE_MAX_REQUESTS
       self.user_agent         = DEFAULT_USER_AGENT
