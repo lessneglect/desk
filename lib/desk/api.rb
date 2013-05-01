@@ -18,10 +18,10 @@ module Desk
     end
 
     def endpoint
-      unless self.fulldomain.blank?
+      if self.fulldomain.blank?
         return "https://#{self.subdomain}.desk.com/api/#{self.version}/"
       else
-        return "#{self.subdomain}/api/#{self.version}/"
+        return "#{self.fulldomain}/api/#{self.version}/"
       end
     end
 
