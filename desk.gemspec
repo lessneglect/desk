@@ -2,7 +2,7 @@
 require File.expand_path('../lib/desk/version', __FILE__)
 
 Gem::Specification.new do |s|
-  # s.add_development_dependency('json', '~> 1.5')
+  #s.add_development_dependency('json', '~> 1.7')
   s.add_development_dependency('nokogiri', '~> 1.4')
   s.add_development_dependency('maruku', '~> 0.6')
   s.add_development_dependency('rake', '~> 0.8')

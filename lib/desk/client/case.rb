@@ -50,6 +50,7 @@ module Desk
       #todo: this needs to support custom subdomains
       def case_url(id)
         "https://#{subdomain}.desk.com/agent/case/#{id}"
+        #"https://#{fulldomain}/agent/case/#{id}"
       end
     end
   end

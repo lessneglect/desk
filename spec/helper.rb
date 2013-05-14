@@ -9,7 +9,7 @@ require 'pony'
 require 'rspec'
 require 'webmock/rspec'
 require 'email_spec'
-require 'ruby-debug'
+#require 'ruby-debug'
 RSpec.configure do |config|
   config.include WebMock::API
 end

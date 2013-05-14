@@ -39,6 +39,7 @@ describe Desk::API do
           :max_requests => 50,
           :proxy => 'http://erik:sekret@proxy.example.com:8080',
           :subdomain => 'zencoder',
+          :fulldomain => 'https://zencoder.desk.com',
           :support_email => 'help@zencoder.com',
           :use_max_requests => true,
           :user_agent => 'Custom User Agent',
