@@ -4,9 +4,13 @@ gemspec
 
 
 group :development do
-  gem "ruby-debug"
+	gem 'rspec-rails', '~> 2.0'
+	gem 'debugger'
+  # gem "ruby-debug"
 end
 
 group :test do
-  gem "ruby-debug"
+	gem 'rspec-rails', '~> 2.0'
+	gem 'debugger'
+  # gem "ruby-debug"
 end
