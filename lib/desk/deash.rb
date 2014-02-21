@@ -20,6 +20,14 @@ module Hashie
     # Object#type is deprecated 
     Mash.send :undef_method, :type
 
+    def client=(api_client)
+      @api_client = api_client
+    end
+
+    def client
+      @api_client || Desk
+    end
+
     def count
       if includes_key_chain?("raw._embedded.entries")
         self.raw._embedded['entries'].count
@@ -39,14 +47,17 @@ module Hashie
     end
 
     def method_missing(method, *args, &block)
+      puts "inside Deash method_missing"
+      puts "method: #{method}"
+      puts "args: #{args}"
       return self.[](method) if key?(method)
       # TODO: Make this DRY
       if includes_key_chain?("_links."+method.to_s)
         return nil if !self._links[method]
-        return Desk.get(self._links[method].href.sub(Desk.api_path, ""))
+        return client.get(self._links[method].href.sub(client.api_path, ""))
       elsif includes_key_chain?("raw._links."+method.to_s)
         return nil if !self.raw._links[method]
-        return Desk.get(self.raw._links[method].href.sub(Desk.api_path, ""))
+        return client.get(self.raw._links[method].href.sub(client.api_path, ""))
       elsif includes_key_chain?("raw."+method.to_s)
         return nil if !self.raw[method]
         return self.raw[method]
@@ -59,8 +70,8 @@ module Hashie
       if includes_key_chain?("raw._links.self.href") ||
          includes_key_chain?("_links.self.href")
         c = self._links.self['class']
-        if Desk.respond_to? "#{c}_id"
-          id = Desk.send("#{c}_id", self._links.self.href, parent_id)
+        if client.respond_to? "#{c}_id"
+          id = client.send("#{c}_id", self._links.self.href, parent_id)
         else
           p = self._links.self.href.split("/")
           if p.size > 5 && !parent_id

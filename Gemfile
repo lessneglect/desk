@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 gemspec
 
+gem 'awesome_print', :require => "ap"
 
 group :development do
 	gem 'rspec-rails', '~> 2.0'

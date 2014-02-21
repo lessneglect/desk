@@ -11,10 +11,13 @@ module Desk
     ].freeze
 
     def method_missing(method_name, *args, &block)
+      # puts "method_name: #{method_name}"
+      # puts "args: #{args}"
       if (REQUEST_METHODS.include? method_name.to_s) && (args.length > 0)
         path = args[0]
         options = args[1] ? args[1] : {}
         raw = args[2] ? args[2] : false
+        # TODO info holding api needs to go in here
         request(method_name.to_sym, path, options, raw)
       else
         super
@@ -47,6 +50,10 @@ module Desk
 
     # Perform an HTTP request
     def request(method, path, options, raw=false)
+      # puts "method: #{method}"
+      puts "request path: #{path}"
+      # puts "options:"
+      # puts "#{options}"
       before_request
       response = connection(raw).send(method) do |request|
         case method
@@ -58,7 +65,14 @@ module Desk
           request.body = options.to_json unless options.empty?
         end
       end
-      raw ? response : response.body
+
+      if raw
+        response
+      else
+        deash = Hashie::Deash.new(response.body)
+        deash.client = self
+        deash
+      end
     end
 
     def formatted_path(path)

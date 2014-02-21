@@ -13,7 +13,10 @@ module Desk
       end
 
       def show_case(case_id, *args)
+        # puts "inside show_case"
+        # puts "args: #{args}"
         options = args.last.is_a?(Hash) ? args.pop : {}
+        # puts "options: #{options}"
         case_id = "e-#{case_id}" if options[:by] == "external_id"
         get("cases/#{case_id}")
       end

@@ -10,12 +10,16 @@ module Desk
     private
 
     def connection(raw=false)
+      puts "Desk::Connection.connection"
       options = {
         :headers => {'Accept' => "application/#{format}", 'User-Agent' => user_agent},
         :proxy => proxy,
         :ssl => {:verify => false},
         :url => api_endpoint,
+        # api should be passed in here.
       }
+
+      puts "options: #{options}"
 
       Faraday.new(options) do |builder|
         builder.use Faraday::Request::MultipartWithFile
@@ -23,7 +27,8 @@ module Desk
         builder.use Faraday::Request::Multipart
         builder.use Faraday::Request::UrlEncoded
         builder.use Faraday::Response::RaiseHttp4xx
-        builder.use FaradayMiddleware::Deashify unless raw
+        puts "about to call FaradayMiddleware::Deashify"
+        #builder.use FaradayMiddleware::Deashify unless raw
         unless raw
           case format.to_s.downcase
           when 'json'
