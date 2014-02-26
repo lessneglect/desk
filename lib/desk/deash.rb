@@ -47,9 +47,6 @@ module Hashie
     end
 
     def method_missing(method, *args, &block)
-      puts "inside Deash method_missing"
-      puts "method: #{method}"
-      puts "args: #{args}"
       return self.[](method) if key?(method)
       # TODO: Make this DRY
       if includes_key_chain?("_links."+method.to_s)

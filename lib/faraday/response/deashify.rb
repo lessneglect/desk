@@ -10,8 +10,6 @@ module FaradayMiddleware
     end
 
     def parse(body)
-      puts "inside parse"
-      puts "body: #{body}"
       case body
       when Hash
         raw = mash_class.new({:raw => body})

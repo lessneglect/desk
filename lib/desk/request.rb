@@ -50,10 +50,6 @@ module Desk
 
     # Perform an HTTP request
     def request(method, path, options, raw=false)
-      # puts "method: #{method}"
-      puts "request path: #{path}"
-      # puts "options:"
-      # puts "#{options}"
       before_request
       response = connection(raw).send(method) do |request|
         case method
