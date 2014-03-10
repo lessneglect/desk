@@ -20,8 +20,6 @@ module Desk
         puts "#{ap path}"
         puts "options:"
         puts "#{ap options}"
-        puts "raw:"
-        puts "#{ap raw}"
         request(method_name.to_sym, path, options, raw)
       else
         super
