@@ -18,7 +18,7 @@ module Desk
         options = args.last.is_a?(Hash) ? args.pop : {}
         # puts "options: #{options}"
         case_id = "e-#{case_id}" if options[:by] == "external_id"
-        get("cases/#{case_id}")
+        get("cases/#{case_id}", options)
       end
       alias_method :case, :show_case
 
