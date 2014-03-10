@@ -11,13 +11,17 @@ module Desk
     ].freeze
 
     def method_missing(method_name, *args, &block)
-      # puts "method_name: #{method_name}"
-      # puts "args: #{args}"
       if (REQUEST_METHODS.include? method_name.to_s) && (args.length > 0)
         path = args[0]
         options = args[1] ? args[1] : {}
         raw = args[2] ? args[2] : false
-        # TODO info holding api needs to go in here
+        puts "api call:"
+        puts "path:"
+        puts "#{ap path}"
+        puts "options:"
+        puts "#{ap options}"
+        puts "raw:"
+        puts "#{ap raw}"
         request(method_name.to_sym, path, options, raw)
       else
         super
