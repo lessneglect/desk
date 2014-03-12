@@ -15,11 +15,6 @@ module Desk
         path = args[0]
         options = args[1] ? args[1] : {}
         raw = args[2] ? args[2] : false
-        puts "api call:"
-        puts "path:"
-        puts "#{ap path}"
-        puts "options:"
-        puts "#{ap options}"
         request(method_name.to_sym, path, options, raw)
       else
         super
