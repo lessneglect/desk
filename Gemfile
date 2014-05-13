@@ -2,16 +2,13 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'awesome_print', :require => "ap"
 
 group :development do
-	gem 'rspec-rails', '~> 2.0'
-	gem 'debugger'
-  # gem "ruby-debug"
+  #gem "ruby-debug19"
+  gem 'json', '~> 1.7.7'
 end
 
 group :test do
-	gem 'rspec-rails', '~> 2.0'
-	gem 'debugger'
-  # gem "ruby-debug"
+  #gem "ruby-debug19"
+  gem 'json', '~> 1.7.7'
 end
