@@ -64,8 +64,8 @@ module Desk
         delete("cases/#{case_id}/replies/#{reply_id}/attachments/#{attachment_id}")
       end
 
-      def case_url(case_id)
-        "https://#{subdomain}.desk.com/agent/case/#{case_id}"
+      def case_url(id)
+        "https://#{subdomain}.desk.com/agent/case/#{id}"
       end
     end
   end
